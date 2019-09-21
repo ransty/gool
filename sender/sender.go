@@ -26,7 +26,11 @@ func ListenForRequests() {
 
 // TCPListener : Set up service and listen for TCP requests
 func TCPListener() {
-	ln, err := net.Listen(senderType, service)
+	tcpAddr, err := net.ResolveTCPAddr(senderType, service)
+	if err != nil {
+		log.Fatal(err)
+	}
+	ln, err := net.ListenTCP(senderType, tcpAddr)
 	if err != nil {
 		log.Fatal("Error binding", err)
 	}
@@ -44,7 +48,7 @@ func TCPListener() {
 
 // UDPListener : Set up service and listen for UDP requests
 func UDPListener() {
-	udpAddr, err := net.ResolveUDPAddr("udp4", service)
+	udpAddr, err := net.ResolveUDPAddr(senderType, service)
 	if err != nil {
 		log.Fatal(err)
 	}
