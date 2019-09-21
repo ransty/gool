@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"gool/sender"
 	"log"
 	"os"
 	"path/filepath"
@@ -20,8 +21,9 @@ func main() {
 	flag.Parse()
 
 	abs := getFilePath(fileToSend)
-
 	fmt.Println("file:", abs)
+
+	sender.ListenForRequests()
 }
 
 // Get the file path of the input
