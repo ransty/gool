@@ -1,2 +1,4 @@
 # gool
-UDP Transfer Program written in Go
+Transfer Program written in Go
+
+Sender / Receiver
